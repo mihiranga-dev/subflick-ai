@@ -1,0 +1,13 @@
+# Ignore the virtual environment folder
+venv/
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore Environment Keys (Security)
+.env
+
+# Ignore temp uploads
+temp_uploads/
+*.mp4
