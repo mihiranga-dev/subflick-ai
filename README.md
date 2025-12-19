@@ -40,8 +40,8 @@
 
 ## 1. Clone the Repository
 
-git clone [https://github.com/mihiranga-dev/subflick-ai.git](https://github.com/mihiranga-dev/subflick-ai.git)
-cd subflick-ai
+- git clone [https://github.com/mihiranga-dev/subflick-ai.git](https://github.com/mihiranga-dev/subflick-ai.git)
+- cd subflick-ai
 
 ## 2. Backend Setup
 
