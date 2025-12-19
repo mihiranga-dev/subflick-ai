@@ -52,7 +52,7 @@ async def upload_video(file: UploadFile = File(...)):
         
         # 4. Translate (Gemini)
         print(f"Translating content ({len(original_text)} chars)...")
-        translated_text = services.translate_text(original_text, "French")
+        translated_text = services.translate_text(original_text, "Sinhala")
         
         return {
             "filename": file.filename,

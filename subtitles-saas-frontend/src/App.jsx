@@ -117,7 +117,7 @@ function App() {
                   <CheckCircle className="w-24 h-24 text-indigo-500" />
                 </div>
                 <h3 className="text-indigo-400 text-xs uppercase font-bold mb-3 tracking-wider flex items-center">
-                  <CheckCircle className="w-4 h-4 mr-2" /> French Subtitles
+                  <CheckCircle className="w-4 h-4 mr-2" /> Sinhala Subtitles
                 </h3>
                 <p className="text-white text-base leading-relaxed font-medium whitespace-pre-wrap">{result.translated_subtitles}</p>
               </div>
