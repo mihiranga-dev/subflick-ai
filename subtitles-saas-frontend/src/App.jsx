@@ -27,10 +27,12 @@ function App() {
     try {
       // 1. Upload & Transcribe
       setStatus('processing');
-      // Connects to your Python backend
-      const response = await axios.post('http://127.0.0.1:8000/transcribe', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      // Connects to Python backend
+      const API_URL = "https://mihiranga-dev-subflick-api.hf.space"; 
+  
+      const response = await axios.post(`${API_URL}/transcribe`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+  });
 
       setResult(response.data);
       setStatus('done');
