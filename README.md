@@ -1,31 +1,53 @@
-# 🎬 SubFlick AI - Context-Aware Subtitle Translator
+# 🎬 SubFlick AI
 
-**SubFlick AI** is a full-stack application that automatically generates and translates subtitles for videos. It uses OpenAI's **Whisper** model for accurate speech-to-text transcription and Google's **Gemini AI** to translate the subtitles while preserving context and nuance (slang, idioms, cultural references).
+**AI-Powered Subtitle Generator & Translator (SaaS)**
 
-![Project Status](https://img.shields.io/badge/Status-Prototype-orange)
-![Python](https://img.shields.io/badge/Backend-FastAPI-green)
-![React](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
+![Project Status](https://img.shields.io/badge/Status-Live_MVP-success)
+![Tech Stack](https://img.shields.io/badge/Stack-FastAPI_React_Groq_Gemini-blueviolet)
+![Deployment](https://img.shields.io/badge/Deployed_on-Hugging_Face_%2B_Netlify-blue)
 
-## ✨ Features
+## 📖 Overview
 
-- **🎥 Video Transcription:** Locally processed using OpenAI Whisper (runs on GPU).
-- **🧠 Contextual Translation:** Uses Google Gemini to translate subtitles into Sinhala (extensible to other languages).
-- **⚡ Modern UI:** Built with React, Tailwind CSS, and Lucide Icons.
-- **🚀 Real-time Processing:** Fast feedback loop with status indicators.
+**SubFlick AI** is a cloud-native SaaS platform that automates the process of creating and translating subtitles for video content.
 
-## 🛠️ Tech Stack
+Unlike traditional tools that require heavy local GPUs, SubFlick AI is built on a **serverless architecture**:
 
-### Backend (Python)
+1.  **Groq Cloud API (Whisper Large v3):** Provides near-instant speech-to-text transcription (approx. 30x faster than real-time).
+2.  **Google Gemini 1.5 Flash:** Handles context-aware translation into **60+ languages** (Sinhala, French, Spanish, etc.).
 
-- **Framework:** FastAPI
-- **AI Models:** OpenAI Whisper (Base model), Google Gemini Flash
-- **Tools:** Uvicorn, Python-Multipart
+The application is containerized with Docker and hosted on **Hugging Face Spaces**, making it accessible from any device without requiring a powerful computer.
 
-### Frontend (React)
+---
 
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS
-- **HTTP Client:** Axios
+## ✨ Key Features
+
+- **⚡ Blazing Fast:** Powered by Groq's LPU inference engine; transcribes 10-minute videos in seconds.
+- **🌍 Multi-Language:** Supports translation into over 60 languages via Google Gemini.
+- **📂 Industry Standard:** Auto-generates valid `.SRT` files with precise timestamps.
+- **🛠 Bandwidth Optimized:** Automatically extracts audio from video client-side/server-side to minimize upload times.
+- **☁️ Cloud Native:** No GPU required. Runs entirely on free-tier cloud infrastructure.
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black) **React + Vite**
+- ![Tailwind](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white) **Tailwind CSS**
+- **Axios** (API Requests)
+
+### Backend
+
+- ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white) **Python 3.11**
+- ![FastAPI](https://img.shields.io/badge/-FastAPI-009688?logo=fastapi&logoColor=white) **FastAPI**
+- **Docker** (Containerization for Hugging Face)
+- **MoviePy** (Audio Extraction)
+
+### AI Services
+
+- **Groq API** (Whisper Large v3)
+- **Google Gemini API** (Translation)
 
 ---
 
@@ -33,60 +55,77 @@
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.11+
 - Node.js & npm
-- A Google Gemini API Key
-- NVIDIA GPU (Recommended for Whisper speed, but works on CPU)
+- API Keys:
+  - **Groq API Key** (from [console.groq.com](https://console.groq.com))
+  - **Gemini API Key** (from [aistudio.google.com](https://aistudio.google.com))
 
-## 1. Clone the Repository
+### 1. Clone the Repository
 
-- git clone [https://github.com/mihiranga-dev/subflick-ai.git](https://github.com/mihiranga-dev/subflick-ai.git)
-- cd subflick-ai
+git clone [https://github.com/mihiranga-dev/subflick-ai.git](https://github.com/mihiranga-dev/subflick-ai.git)
+cd subflick-ai
 
-## 2. Backend Setup
+### 2. Backend Setup
 
-- Navigate to the backend folder and set up the virtual environment:
-- cd subtitles-saas-backend
-- python -m venv venv
+cd subtitles-saas-backend
 
-### Activate Virtual Environment
+- #### Create virtual environment
 
-#### Windows:
+  python -m venv venv
 
-- venv\Scripts\activate
+- #### Activate (Windows)
 
-#### Mac/Linux:
+  venv\Scripts\activate
 
-- source venv/bin/activate
+- #### Activate (Mac/Linux)
 
-### Install the dependencies:
+  source venv/bin/activate
 
-pip install fastapi uvicorn python-multipart python-dotenv google-generativeai openai-whisper
+- #### Install dependencies
 
-### Configuration: Create a .env file in the subtitles-saas-backend folder:
+  pip install -r requirements.txt
 
-GEMINI_API_KEY=your_google_api_key_here
+- Configure Environment Variables:
 
-## 3. Frontend Setup
+  - Create a .env file in - subtitles-saas-backend/ and add:
+    - GROQ_API_KEY=your_groq_key
+    - GEMINI_API_KEY=your_gemini_key
 
-Open a new terminal and navigate to the frontend folder:
+- Run Server:
+  uvicorn main:app --reload
+
+### 3. Frontend Setup
 
 - cd subtitles-saas-frontend
 - npm install
-
-## 🏃‍♂️ Running the Application
-
-You need to run the Backend and Frontend in separate terminals.
-
-### Terminal 1 (Backend):
-
-- cd subtitles-saas-backend
-- venv\Scripts\activate
-- uvicorn main:app --reload
-
-### Terminal 2 (Frontend):
-
-- cd subtitles-saas-frontend
 - npm run dev
 
-Open your browser and navigate to the link shown (usually http://localhost:5173)
+## 📦 Deployment Guide
+
+### Backend (Hugging Face Spaces)
+
+1. Create a new Space (Docker SDK).
+
+2. Upload the subtitles-saas-backend files (Dockerfile, main.py, requirements.txt, etc.).
+
+3. Add GROQ_API_KEY and GEMINI_API_KEY in Space Settings -> Secrets.
+
+### Frontend (Netlify/Vercel)
+
+1. Import the repository.
+
+2. Set Root Directory to subtitles-saas-frontend.
+
+3. Set Build Command to npm run build and Output Directory to dist.
+
+4. Important: Update the API_URL in App.jsx to point to your live Hugging Face URL.
+
+## 📄 License
+
+Distributed under the MIT License.
+
+## 👤 Author
+
+- Mihiranga
+- GitHub: @mihiranga-dev
