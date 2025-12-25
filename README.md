@@ -6,6 +6,10 @@
 ![Tech Stack](https://img.shields.io/badge/Stack-FastAPI_React_Groq_Gemini-blueviolet)
 ![Deployment](https://img.shields.io/badge/Deployed_on-Hugging_Face_%2B_Netlify-blue)
 
+## 🚀 Live Demo
+
+**[Click here to view the Live App](https://subflick-ai.netlify.app)**
+
 ## 📖 Overview
 
 **SubFlick AI** is a cloud-native SaaS platform that automates the process of creating and translating subtitles for video content.
