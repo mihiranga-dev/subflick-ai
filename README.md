@@ -9,7 +9,7 @@
 ## ✨ Features
 
 - **🎥 Video Transcription:** Locally processed using OpenAI Whisper (runs on GPU).
-- **🧠 Contextual Translation:** Uses Google Gemini to translate subtitles into French (extensible to other languages).
+- **🧠 Contextual Translation:** Uses Google Gemini to translate subtitles into Sinhala (extensible to other languages).
 - **⚡ Modern UI:** Built with React, Tailwind CSS, and Lucide Icons.
 - **🚀 Real-time Processing:** Fast feedback loop with status indicators.
 
